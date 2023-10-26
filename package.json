@@ -10,6 +10,9 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "Kumar Anirudha <mail@anirudha.dev>",
+  "contributors": [
+    "Oleksandr Demchenko <alexdemchenko@yahoo.com>"
+  ],
   "license": "Apache-2.0",
   "keywords": [
     "chat",
