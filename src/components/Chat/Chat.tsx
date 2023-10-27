@@ -16,6 +16,8 @@ import {
   StatusBarProps,
   Text,
   View,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
@@ -383,7 +385,8 @@ export const Chat = ({
         ref={list}
         renderItem={renderItem}
         {...panHandlers}
-      />
+      >
+      </FlatList>
     ),
     [
       chatMessages,
@@ -404,7 +407,12 @@ export const Chat = ({
     <UserContext.Provider value={user}>
       <ThemeContext.Provider value={theme}>
         <L10nContext.Provider value={l10nValue}>
-          <View style={container} onLayout={onLayout}>
+          <KeyboardAvoidingView
+            style={container}
+            onLayout={onLayout}
+            behavior='height'
+            keyboardVerticalOffset={Platform.OS === 'ios' ? -165 : 0}
+          >
             {customBottomComponent ? (
               <>
                 <>{renderScrollable({})}</>
@@ -414,6 +422,8 @@ export const Chat = ({
               <KeyboardAccessoryView
                 {...{
                   renderScrollable,
+                  contentOffsetKeyboardOpened: -50,
+                  contentOffsetKeyboardClosed: -50,
                   style: keyboardAccessoryView,
                 }}
               >
@@ -436,7 +446,7 @@ export const Chat = ({
               onRequestClose={handleRequestClose}
               visible={isImageViewVisible}
             />
-          </View>
+          </KeyboardAvoidingView>
         </L10nContext.Provider>
       </ThemeContext.Provider>
     </UserContext.Provider>

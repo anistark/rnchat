@@ -6,7 +6,7 @@ export default ({ theme }: { theme: Theme }) =>
   StyleSheet.create({
     container: {
       backgroundColor: theme.colors.background,
-      flex: 1,
+      flex: 1
     },
     emptyComponentContainer: {
       alignItems: 'center',
@@ -20,6 +20,7 @@ export default ({ theme }: { theme: Theme }) =>
     flatList: {
       backgroundColor: theme.colors.background,
       height: '100%',
+      marginBottom: 50,
     },
     flatListContentContainer: {
       flexGrow: 1,
